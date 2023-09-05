@@ -13,7 +13,6 @@
 
 ## Politeknik Negeri Malang
 ### For more information
-- WA    : 085156552045
 - Email : bimatris13@gmail.com
 
 ‎
