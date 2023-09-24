@@ -1,39 +1,12 @@
 ## Week 4 Collections, Records, and Functions in Dart
 
-Wildan Hafidz Mauludin
+```
+Ahmad Bima Tristan Ibrahim
+```
 
-2141720007
-
-## Table of Content
-- [Week 4 Collections, Records, and Functions in Dart](#week-4-collections-records-and-functions-in-dart)
-- [Table of Content](#table-of-content)
-- [Praktikum 1: Eksperimen Tipe Data List](#praktikum-1-eksperimen-tipe-data-list)
-  - [Langkah 1:](#langkah-1)
-  - [Langkah 2:](#langkah-2)
-  - [Langkah 3:](#langkah-3)
-- [Praktikum 2: Eksperimen Tipe Data Set](#praktikum-2-eksperimen-tipe-data-set)
-  - [Langkah 1:](#langkah-1-1)
-  - [Langkah 2:](#langkah-2-1)
-  - [Langkah 3:](#langkah-3-1)
-  - [Langkah 4:](#langkah-4)
-- [Praktikum 3: Eksperimen Tipe Data Maps](#praktikum-3-eksperimen-tipe-data-maps)
-  - [Langkah 1:](#langkah-1-2)
-  - [Langkah 2:](#langkah-2-2)
-  - [Langkah 3:](#langkah-3-2)
-  - [Langkah 4](#langkah-4-1)
-- [Praktikum 4: Eksperimen Tipe Data List: Spread dan Control-flow Operators](#praktikum-4-eksperimen-tipe-data-list-spread-dan-control-flow-operators)
-  - [Langkah 1:](#langkah-1-3)
-  - [Langkah 2:](#langkah-2-3)
-  - [Langkah 3:](#langkah-3-3)
-  - [Langkah 4:](#langkah-4-2)
-  - [Langkah 5:](#langkah-5)
-- [Praktikum 5: Eksperimen Tipe Data Records](#praktikum-5-eksperimen-tipe-data-records)
-  - [Langkah 1:](#langkah-1-4)
-  - [Langkah 2:](#langkah-2-4)
-  - [Langkah 3:](#langkah-3-4)
-  - [Langkah 4:](#langkah-4-3)
-  - [Langkah 5:](#langkah-5-1)
-- [Tugas Praktikum](#tugas-praktikum)
+```
+2141720077
+```
 
 ## Praktikum 1: Eksperimen Tipe Data List
 
