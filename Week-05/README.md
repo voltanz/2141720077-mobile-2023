@@ -506,6 +506,50 @@ Jawab:
 
 Jawab:
 
+Praktikum 2
+- Langkah 1.1
+
+![screen.gif](docs/langkah%2011.gif)
+
+- Langkah 1.2
+
+![screen.gif](docs/langkah%2012.gif)
+
+Praktikum 3 
+- Langkah 1
+
+![screen.gif](docs/p3%20langkah%201.gif)
+
+Praktikum 4
+- Langkah 1
+
+![screen.gif](docs/p4%20langkah%201.gif)
+
+- Langkah 2
+
+![screen.gif](docs/p4%20langkah%202.gif)
+
+- Langkah 3
+
+![screen.gif](docs/p4%20langkah%203.gif)
+
+- Langkah 4
+
+![screen.gif](docs/p4%20langkah%204.gif)
+
+- Langkah 5
+
+![screen.gif](docs/p4%20langkah%205.gif)
+
+- Langkah 6
+
+![screen.gif](docs/p4%20langkah%206.gif)
+
+- Tugas Praktikum No 2
+
+![screen.gif](docs/tugas%20no%202.gif)
+
+
 ![screen.gif](docs/screen.gif)
 
 5. Kumpulkan berupa link repository/commit GitHub Anda ke tautan spreadsheet yang telah disepakati oleh dosen!
