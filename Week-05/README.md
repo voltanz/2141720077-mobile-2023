@@ -506,7 +506,7 @@ Jawab:
 
 Jawab:
 
-Praktikum 2
+**Praktikum 2**
 - Langkah 1.1
 
 ![screen.gif](docs/langkah%2011.gif)
@@ -515,12 +515,12 @@ Praktikum 2
 
 ![screen.gif](docs/langkah%2012.gif)
 
-Praktikum 3 
+**Praktikum 3** 
 - Langkah 1
 
 ![screen.gif](docs/p3%20langkah%201.gif)
 
-Praktikum 4
+**Praktikum 4**
 - Langkah 1
 
 ![screen.gif](docs/p4%20langkah%201.gif)
@@ -545,7 +545,8 @@ Praktikum 4
 
 ![screen.gif](docs/p4%20langkah%206.gif)
 
-- Tugas Praktikum No 2
+
+**Tugas Praktikum No 2**
 
 ![screen.gif](docs/tugas%20no%202.gif)
 
