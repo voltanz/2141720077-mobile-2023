@@ -774,3 +774,8 @@ Digunakan untuk menampilkan gambar
 - Image 3
 
 ![Output](docs/pic3.jpg)
+
+
+**Putting It All Together**
+
+![Output](docs/result.jpg)

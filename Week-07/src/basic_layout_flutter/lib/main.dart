@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,29 +9,56 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ahmad Bima Tristan Ibrahim, 2141720077',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ahmad Bima Tristan Ibrahim, 2141720077'),
-        ),
-        body: ListView(children: [
-          MyWidget(),
-        ]),
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(24),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(Icons.account_circle, size: 100, color: Colors.redAccent),
+          Expanded(
+              child: Column(
+            children: [
+              Text(
+                "Bima Tristan",
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+              Text("2141720077",
+                  style: TextStyle(fontSize: 16, color: Colors.white))
+            ],
+          ))
+        ],
       ),
     );
-  }
-}
 
-// //Image WIdget
-class MyWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    Widget contactSection = const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.network('https://raw.githubusercontent.com/flutter/website/main/examples/layout/sizing/images/pic3.jpg'),
+        Text("Malang", style: TextStyle(fontSize: 16, color: Colors.yellowAccent)),
+        Text("08123456789",
+            style: TextStyle(fontSize: 16, color: Colors.yellowAccent))
       ],
+    );
+
+    Widget iconSection = Container(
+      padding: const EdgeInsets.all(16),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Icon(Icons.sports_soccer, color: Colors.lime),
+          Icon(Icons.audiotrack, color: Colors.green),
+          Icon(Icons.phone_android, color: Colors.cyan),
+          Icon(Icons.sports_esports, color: Colors.pink),
+        ],
+      ),
+    );
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: ListView(children: [titleSection, contactSection, iconSection]),
     );
   }
 }
