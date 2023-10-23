@@ -696,3 +696,81 @@ Pada langkah terakhir ini, atur semua elemen dalam `ListView`, bukan Column, kar
 **Output Praktikum 4: Implementasi Image Section**
 
 ![Output](docs/6.jpg)
+
+### Jobsheet Codelabs Layout Basics
+
+[Jobsheet 07 - Codelabs Layout Basics](https://docs.flutter.dev/codelabs/layout-basics)
+
+**Row and Column classes**
+
+![Output](docs/row.jpg)
+
+**Axis Size and Alignment**
+
+**Main Axis Size**
+
+Menentukan seberapa banyak ruang yang bisa digunakan oleh component.
+
+![Output](docs/size.jpg)
+
+**Main Axis Alignment**
+
+Menentukan bagaimana posisi berada component.
+
+![Output](docs/aligment.jpg)
+
+**Cross Axis Alignment**
+
+Menentukan bagaimana posisi berada component pada posisi bersilangan.
+
+![Output](docs/property.jpg)
+
+**Flexible Widget**
+
+Digunakan untuk memberikan fleksibilitas kepada children terhadap parent widget.
+
+![Output](docs/flex.jpg)
+
+**Expanded Widget**
+
+Digunakan untuk memberikan fleksibilitas kepada children untuk mengisi ruang pada parent.
+
+![Output](docs/expanded.jpg)
+
+**SizedBox Widget**
+
+Digunakan untuk memberikan ukuran widget yang sesuai dengan lebar dan tinggi yang telah ditentukan.
+
+![Output](docs/sizebox.jpg)
+
+**Text Widget**
+
+Digunakan untuk menampilkan text
+
+- Menampilkan text dengan berbagai opsi seperti fon family, font size, dan color
+
+![Output](docs/text.jpg)
+
+**Icon Widget**
+
+Digunakan untuk menampilkan icon
+
+- Menampilkan icon dengan opsi jenis icon, ukuran, dan warna
+
+![Output](docs/icon.jpg)
+
+**Image Widget**
+
+Digunakan untuk menampilkan gambar
+
+- Image 1
+
+![Output](docs/pic1.jpg)
+
+- Image 2
+
+![Output](docs/pic2.jpg)
+
+- Image 3
+
+![Output](docs/pic3.jpg)
