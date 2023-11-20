@@ -425,3 +425,81 @@ final futures = Future.wait<int>([
 >- Jelaskan maksud perbedaan kode langkah 1 dan 4!
 
 Jawab: Perbedaan kode pada langkah 1 dan kode langkah 4 adalah pada penggunaan variabel ``futureGroup``. Pada langkah 1, variabel ``futureGroup`` digunakan untuk menampung ``FutureGroup``. ``FutureGroup`` adalah sebuah objek yang dapat digunakan untuk mengelompokkan beberapa Future bersama-sama. Sedangkan pada langkah 4, variabel ``futureGroup`` diganti dengan ``Future.wait()``. ``Future.wait()`` adalah sebuah fungsi yang dapat digunakan untuk menunggu beberapa Future selesai dijalankan.
+
+
+### **Praktikum 5: Menangani Respon Error pada Async Code**
+
+Ada beberapa teknik untuk melakukan *handle error* pada code async. Pada praktikum ini Anda akan menggunakan 2 cara, yaitu ``then()`` callback dan pola ``async/await``.
+
+Setelah Anda menyelesaikan praktikum 4, Anda dapat melanjutkan praktikum 5 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+<p>
+
+**Langkah 1: Buka file main.dart**
+
+Tambahkan method ini ke dalam ``class _FuturePageState``
+
+```dart
+Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+```
+
+**Langkah 2: ElevatedButton**
+
+Ganti dengan kode berikut
+
+```dart
+returnError().then((value) {
+                setState(() {
+                  result = 'Success';
+                });
+              }).catchError((onError) {
+                setState(() {
+                  result = onError.toString();
+                });
+              }).whenComplete(() => print('Complete'));
+```
+
+**Langkah 3: Run**
+
+Lakukan run dan klik tombol **GO!** maka akan menghasilkan seperti gambar berikut.
+
+![Output](docs/ss5.png)
+
+Pada bagian debug console akan melihat teks ``Complete`` seperti berikut.
+
+![Output](docs/ss6.png)
+
+>**Soal 9**
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "**W12: Soal 9**".
+
+![Output](docs/soal9.gif)
+<p>
+
+**Langkah 4: Tambah method handleError()**
+
+Tambahkan kode ini di dalam ``class _FutureStatePage``
+
+```dart
+Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
+  }
+```
+
+>**Soal 10**
+>- Panggil method ``handleError()`` tersebut di ``ElevatedButton``, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+Jawab: <p>
+Perbedaan kode pada langkah 1 dan kode langkah 4 adalah pada penanganan error.
+- Pada langkah 1, method ``returnError()`` tidak menangani error yang terjadi. Jika error terjadi, maka method tersebut akan berhenti dan tidak mengembalikan nilai apa pun.
+- Sedangkan pada langkah 4, method ``handleError()`` menangani error yang terjadi dengan menggunakan ``try-catch-finally``. Pada try block, method ``handleError()`` mencoba untuk menjalankan method ``returnError()``. Jika error terjadi, maka ``try block`` akan berhenti dan error akan ditangkap oleh ``catch block``. Pada ``catch block``, method ``handleError()`` akan menampilkan error ke layar menggunakan ``print()``. ``Finally block`` akan selalu dijalankan, terlepas dari apakah ada error yang terjadi atau tidak.
