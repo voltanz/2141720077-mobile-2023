@@ -629,3 +629,113 @@ Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan peru
 Jawab: Karena package geolocator juga support di browser, sehingga koordinat GPS juga bisa didapatkan pada browser, beserta izinnya.
 
 ![Output](docs/soal12.gif)
+
+
+### **Praktikum 7: Manajemen Future dengan FutureBuilder**
+
+Pola ketika menerima beberapa data secara async dan melakukan update pada UI sebenarnya itu tergantung pada ketersediaan data. Secara umum fakta di Flutter, ada sebuah widget yang membantu Anda untuk memudahkan manajemen future yaitu widget ``FutureBuilder``.
+
+Anda dapat menggunakan FutureBuilder untuk manajemen future bersamaan dengan update UI ketika ada update Future. FutureBuilder memiliki status future sendiri, sehingga Anda dapat mengabaikan penggunaan ``setState``, Flutter akan membangun ulang bagian UI ketika update itu dibutuhkan.
+
+Untuk lebih memahami widget FutureBuilder, mari kita coba dengan praktikum ini.
+
+Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+**Langkah 1: Modifikasi method getPosition()**
+Buka file ``geolocation.dart`` kemudian ganti isi method dengan kode ini.
+
+```dart
+Future<Position> getPosition() async {
+    await Geolocator.requestPermission();
+    await Geolocator.isLocationServiceEnabled();
+    await Future.delayed(const Duration(seconds: 3));
+    Position? position = 
+      await Geolocator.getCurrentPosition();
+    return position;
+  }
+```
+
+**Langkah 2: Tambah variabel**
+
+Tambah variabel ini di ``class _LocationScreenState``
+
+```dart
+Future<Position>? position;
+```
+
+**Langkah 3: Edit method build()**
+
+Tambah method ini dan set variabel ``position``
+
+```dart
+@override
+  void initState() {
+    super.initState();
+    position = getPosition();
+  }
+```
+
+**Langkah 4: Tambah initState()**
+
+Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    final myWidget =
+    myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+    ;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location Tristan')),
+      body: Center(
+          child: FutureBuilder(
+        future: position,
+        builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text('Something terrible happened!');
+            }
+            return Text(snapshot.data.toString());
+          } else {
+            return const Text('');
+          }
+        },
+      )),
+    );
+  }
+```
+
+>**Soal 13**
+>- Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 13".
+>- Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
+
+Jawab: Kedua praktikum menampilkan koordinat Geolokasi dengan layout yang sama. Hal ini terjadi karena keduanya mengambil lokasi pengguna secara langsung saat aplikasi dimulai.
+
+Untuk pembaruan UI, pada kasus pertama, setState digunakan untuk memperbarui variabel state myPosition. Pada kasus kedua, FutureBuilder digunakan untuk mengelola pembaruan UI secara otomatis. Namun pada akhirnya, hasil tampilan UI terlihat sama karena keduanya memiliki penundaan yang sama, yakni 3 detik.
+
+![Output](docs/soal13.gif)
+<p>
+
+**Langkah 5: Tambah handling error**
+
+Tambahkan kode berikut untuk menangani ketika terjadi error. Kemudian hot restart.
+
+```dart
+else if (snapshot.connectionState == ConnectionState.done) {
+  if (snapshot.hasError) {
+     return Text('Something terrible happened!');
+  }
+  return Text(snapshot.data.toString());
+}
+```
+
+>**Soal 14**
+>- Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "**W12: Soal 14**".
+
+Jawab: Langkah ini tidak mengubah tampilan UI. Hal ini karena langkah ini hanya menambahkan fungsi ``handleError()`` yang akan dijalankan jika terjadi kesalahan. Namun, pada langkah ini tidak ada kesalahan yang terjadi selama pemrosesan data lokasi. Oleh karena itu, pesan kesalahan ``"Something terrible happened!"`` tidak akan ditampilkan.
+
+![Output](docs/soal13.gif)
