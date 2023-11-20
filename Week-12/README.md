@@ -343,3 +343,85 @@ Jawab:
 - Pada langkah 6, kita mengganti kode di method ``onPressed()``. Method ``onPressed()`` sebelumnya menggunakan ``then()`` untuk menangani hasil dari method ``getNumber()``. Namun, method ini tidak menangani kesalahan yang mungkin terjadi saat memanggil method ``getNumber()``. Kode ini menggunakan ``then()`` dan ``catchError()`` untuk menangani hasil dari method ``getNumber()``. Jika tidak terjadi kesalahan, maka method ini akan memanggil method ``setState()`` untuk memperbarui state dari widget. Jika terjadi kesalahan, maka method ini akan memanggil method ``setState()`` untuk memperbarui state dari widget dan menampilkan pesan kesalahan.
 
 ![Output](docs/soal6.gif)
+
+
+### **Praktikum 4: Memanggil Future secara paralel**
+
+Ketika Anda membutuhkan untuk menjalankan banyak Future secara bersamaan, ada sebuah class yang dapat Anda gunakan yaitu: ``FutureGroup``.
+
+``FutureGroup`` tersedia di package ``async``, yang mana itu harus diimpor ke file dart Anda, seperti berikut.
+
+```dart
+import 'package:async/async.dart';
+```
+
+>Catatan: Package ``dart:async`` dan ``async/async.dart`` merupakan library yang berbeda. Pada beberapa kasus, Anda membutuhkan kedua lib tersebut untuk me-*run* *code async*.
+
+**FutureGroup** adalah sekumpulan dari Future yang dapat run secara paralel. Ketika run secara paralel, maka konsumsi waktu menjadi lebih hemat (cepat) dibanding run method async secara single setelah itu method async lainnya.
+
+Ketika semua code async paralel selesai dieksekusi, maka FutureGroup akan return value sebagai sebuah ``List``, sama juga ketika ingin menambahkan operasi paralel dalam bentuk ``List``.
+
+Setelah Anda menyelesaikan praktikum 3, Anda dapat melanjutkan praktikum 4 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+**Langkah 1: Buka file main.dart**
+
+Tambahkan method ini ke dalam ``class _FuturePageState``
+
+```dart
+void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+    futureGroup.future.then((List<int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    });
+  }
+```
+
+**Langkah 2: Edit onPressed()**
+
+Anda bisa hapus atau comment kode sebelumnya, kemudian panggil method dari langkah 1 tersebut.
+
+```dart
+onPressed: () {
+  returnFG();
+}
+```
+
+**Langkah 3: Run**
+
+Anda akan melihat hasilnya dalam 3 detik berupa angka 6 lebih cepat dibandingkan praktikum sebelumnya menunggu sampai 9 detik.
+
+>**Soal 7**
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "**W12: Soal 7**".
+
+Jawab:
+<p>
+
+![Output](docs/soal7.gif)
+<p>
+
+**Langkah 4: Ganti variabel futureGroup**
+
+Anda dapat menggunakan FutureGroup dengan ``Future.wait`` seperti kode berikut.
+
+```dart
+final futures = Future.wait<int>([
+  returnOneAsync(),
+  returnTwoAsync(),
+  returnThreeAsync(),
+]);
+```
+
+>**Soal 8**
+>- Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+Jawab: Perbedaan kode pada langkah 1 dan kode langkah 4 adalah pada penggunaan variabel ``futureGroup``. Pada langkah 1, variabel ``futureGroup`` digunakan untuk menampung ``FutureGroup``. ``FutureGroup`` adalah sebuah objek yang dapat digunakan untuk mengelompokkan beberapa Future bersama-sama. Sedangkan pada langkah 4, variabel ``futureGroup`` diganti dengan ``Future.wait()``. ``Future.wait()`` adalah sebuah fungsi yang dapat digunakan untuk menunggu beberapa Future selesai dijalankan.
