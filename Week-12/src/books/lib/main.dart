@@ -78,7 +78,14 @@ class _FuturePageState extends State<FuturePage> {
               //   result = 'An error occurred';
               //   setState(() {});
               // });
-              count();
+              // count();
+              getNumber().then((value) {
+                setState(() {
+                  result = value.toString();
+                });
+              }).catchError((e) {
+                result = 'An error occurred';
+              });
             },
           ),
           const Spacer(),
@@ -89,6 +96,23 @@ class _FuturePageState extends State<FuturePage> {
         ]),
       ),
     );
+  }
+
+  late Completer completer;
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    try {
+      await new Future.delayed(const Duration(seconds: 5));
+      completer.complete(42);
+    } catch (_) {
+      completer.completeError({});
+    }
   }
 
   Future<Response> getData() async {
