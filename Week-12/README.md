@@ -161,3 +161,81 @@ Jawab:
 - substring() adalah metode untuk mengambil substring dari string. Substring merupakan bagian dari string yang dimulai dari indeks tertentu dan berakhir pada indeks tertentu. Metode substring() menerima dua parameter, yaitu indeks awal dan indeks akhir. Indeks awal adalah indeks karakter pertama yang ingin diambil, dan indeks akhir adalah indeks karakter terakhir yang ingin diambil. 
 - catchError() adalah metode untuk menangani kesalahan. Metode catchError() menerima satu parameter, yaitu fungsi yang akan dijalankan jika terjadi kesalahan. Fungsi tersebut akan menerima objek kesalahan sebagai parameter. Kode di atas menggunakan substring() untuk mengambil 450 karakter pertama dari respons API. Jika terjadi kesalahan saat mengambil respons API, maka kode tersebut akan menggunakan catchError() untuk menampilkan pesan kesalahan "An error occurred".
 - ![Output](docs/soal2.gif)
+
+### **Praktikum 2: Menggunakan await/async untuk menghindari callbacks**
+
+<p>
+
+Ada alternatif penggunaan Future yang lebih clean, mudah dibaca dan dirawat, yaitu pola async/await. Intinya pada dua kata kunci ini:
+- ``async`` digunakan untuk menandai suatu method sebagai asynchronous dan itu harus ditambahkan di depan kode function.
+- ``await`` digunakan untuk memerintahkan menunggu sampai eksekusi suatu function itu selesai dan mengembalikan sebuah ``value``. Untuk ``then`` bisa digunakan pada jenis method apapun, sedangkan ``await`` hanya bekerja di dalam method ``async``.
+
+<p>
+
+**Langkah 1: Buka file main.dart**
+
+Tambahkan tiga method berisi kode seperti berikut di dalam ``class _FuturePageState``.
+
+```dart
+Future<int> returnOneAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 1;
+}
+
+Future<int> returnTwoAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 2;
+}
+
+Future<int> returnThreeAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 3;
+}
+```
+
+**Langkah 2: Tambah method count()**
+
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya.
+
+```dart
+Future count() async {
+    int total = 0;
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    setState(() {
+      result = total.toString();
+    });
+  }
+```
+
+**Langkah 3: Panggil count()**
+
+Lakukan comment kode sebelumnya, ubah isi kode ``onPressed()`` menjadi seperti berikut.
+
+```dart
+ElevatedButton(
+            child: const Text('GO!'),
+            onPressed: () {
+              count();
+            },
+          ),
+```
+
+**Langkah 4: Run**
+
+Akhirnya, **run** atau tekan **F5** jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+![Output](docs/ss3.png)
+
+**Soal 4**
+- Jelaskan maksud kode langkah 1 dan 2 tersebut!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "**W12: Soal 4**".
+
+Jawab: Langkah 1 kode di atas adalah kode dart yang terdiri dari tiga fungsi asynchronous, yaitu ``returnOneAsync()``, ``returnTwoAsync()``, dan ``returnThreeAsync()``. Ketiga fungsi ini mengembalikan nilai int dan menggunakan ``Future.delayed()`` untuk menunda eksekusi selama 3 detik. Berikut adalah penjelasan masing-masing fungsi:
+
+- returnOneAsync() Fungsi ini mengembalikan nilai 1 setelah 3 detik.
+- returnTwoAsync() Fungsi ini mengembalikan nilai 2 setelah 3 detik.
+- returnThreeAsync() Fungsi ini mengembalikan nilai 3 setelah 3 detik. Langkah 2 Kode di atas adalah sebuah fungsi asynchronous bernama ``count()`` yang digunakan untuk menghitung jumlah dari tiga fungsi asynchronous lainnya, yaitu ``returnOneAsync()``, ``returnTwoAsync()``, dan ``returnThreeAsync()``. Fungsi count() ini mengembalikan Future, yang berarti bahwa eksekusinya tidak akan memblokir kode lainnya.
+
+![Output](docs/soal4.gif)
