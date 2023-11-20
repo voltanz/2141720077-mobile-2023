@@ -739,3 +739,142 @@ else if (snapshot.connectionState == ConnectionState.done) {
 Jawab: Langkah ini tidak mengubah tampilan UI. Hal ini karena langkah ini hanya menambahkan fungsi ``handleError()`` yang akan dijalankan jika terjadi kesalahan. Namun, pada langkah ini tidak ada kesalahan yang terjadi selama pemrosesan data lokasi. Oleh karena itu, pesan kesalahan ``"Something terrible happened!"`` tidak akan ditampilkan.
 
 ![Output](docs/soal13.gif)
+
+
+### **Praktikum 8: Navigation route dengan Future Function**
+
+Praktikum kali ini Anda akan melihat manfaat Future untuk Navigator dalam transformasi Route menjadi sebuah function async. Anda akan melakukan push screen baru dan fungsi await menunggu data untuk melakukan update warna background pada screen.
+
+Setelah Anda menyelesaikan praktikum 7, Anda dapat melanjutkan praktikum 8 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.
+
+**Langkah 1: Buat file baru navigation_first.dart**
+
+Buatlah file baru ini di project lib Anda.
+
+**Langkah 2: Isi kode navigation_first.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation First Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            child: const Text('Change Color'),
+            onPressed: () {
+              _navigateAndGetColor(context);
+            }),
+      ),
+    );
+  }
+}
+```
+
+>**Soal 15**
+>- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+>- Silakan ganti dengan warna tema favorit Anda.
+
+Jawab: 
+
+```dart
+appBar: AppBar(
+        title: const Text('Navigation First Screen'),
+```
+
+**Langkah 3: Tambah method di class _NavigationFirstState**
+
+Tambahkan method ini.
+
+```dart
+Future _navigateAndGetColor(BuildContext context) async {
+   color = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const NavigationSecond()),) ?? Colors.blue;
+   setState(() {});
+   });
+}
+```
+
+**Langkah 4: Buat file baru navigation_second.dart**
+
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+**Langkah 5: Buat class NavigationSecond dengan StatefulWidget**
+
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+```dart
+import 'package:flutter/material.dart';
+import './navigation_second.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation First Screen Tristan'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            child: const Text('Change Color'),
+            onPressed: () {
+              _navigateAndGetColor(context);
+            }),
+      ),
+    );
+  }
+
+  Future _navigateAndGetColor(BuildContext context) async {
+    color = await Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationSecond()),
+        ) ??
+        Color(0xFFBFB29E);
+    setState(() {});
+  }
+}
+```
+
+**Langkah 6: Edit main.dart**
+
+Lakukan edit properti home.
+
+```dart
+home: const NavigationFirst(),
+```
+
+
+**Langkah 8: Run**
+
+Lakukan run, jika terjadi error silakan diperbaiki.
+
+**Soal 16**
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "**W12: Soal 16**".
+
+Jawab:
+
+![Output](docs/soal16.gif)
