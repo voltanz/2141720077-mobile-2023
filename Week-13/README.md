@@ -60,3 +60,16 @@ Jawab:
 
 Jawab: 
 ![Output](docs/soal4.gif)
+
+>**Soal 5**
+>- Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
+>- Lakukan commit hasil jawaban Soal 5 dengan pesan "W13: Jawaban Soal 5"
+
+Jawab:
+
+Kedua pendekatan tersebut, yakni menggunakan await for dan listen, berfungsi untuk mendengarkan perubahan pada stream, tetapi terdapat perbedaan utama dalam cara mereka berinteraksi dengan stream.
+
+- await for mengharapkan fungsi yang dilabeli async, sementara listen dapat digunakan di dalam atau di luar fungsi yang diberi label async.
+- await for digunakan untuk membuat loop yang akan terus menunggu dan mendengarkan stream, sementara listen digunakan untuk menetapkan fungsi callback yang akan dipanggil setiap kali ada perubahan pada stream.
+
+Dalam kedua kasus, tujuannya tetap sama, yaitu merespons perubahan pada stream dan memperbarui UI melalui setState ketika ada perubahan warna. Pilihan antara keduanya tergantung pada kebutuhan dan struktur kode aplikasi
