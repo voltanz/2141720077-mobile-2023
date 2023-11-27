@@ -22,3 +22,25 @@ title: 'Stream Bima',
       ),
       home: const StreamHomePage(),
 ```
+
+>**Soal 2**
+>- Tambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors tersebut.
+>- Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 2"
+
+Jawab:
+```dart
+class ColorStram {
+  final List<Color> colors = [
+    Colors.blueGrey,
+    Colors.amber,
+    Colors.deepPurple,
+    Colors.lightBlue,
+    Colors.teal,
+    Colors.blueGrey,
+    Colors.lime,
+    Colors.deepPurple,
+    Colors.red,
+    Colors.lightGreen,
+  ];
+}
+```
