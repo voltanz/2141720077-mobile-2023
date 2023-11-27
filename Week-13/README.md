@@ -73,3 +73,14 @@ Kedua pendekatan tersebut, yakni menggunakan await for dan listen, berfungsi unt
 - await for digunakan untuk membuat loop yang akan terus menunggu dan mendengarkan stream, sementara listen digunakan untuk menetapkan fungsi callback yang akan dipanggil setiap kali ada perubahan pada stream.
 
 Dalam kedua kasus, tujuannya tetap sama, yaitu merespons perubahan pada stream dan memperbarui UI melalui setState ketika ada perubahan warna. Pilihan antara keduanya tergantung pada kebutuhan dan struktur kode aplikasi
+
+>**Soal 6**
+>- Jelaskan maksud kode langkah 8 dan 10 tersebut!
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+>- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
+
+Jawab:
+
+Secara keseluruhan, langkah 8 dan 10 ini menciptakan dan mengelola stream angka dengan menggunakan NumberStream, menginisialisasi stream controller, mendengarkan perubahan pada stream, dan menambahkan angka acak ke dalam stream.
+
+![Output](docs/soal6.gif)
