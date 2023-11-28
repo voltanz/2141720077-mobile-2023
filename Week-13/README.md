@@ -140,3 +140,14 @@ Jawab:
 Kesalahan tersebut terjadi ketika mencoba untuk menambahkan atau membuat dua langganan pada stream yang sama, tanpa membatalkan langganan sebelumnya. Hal tersebut terjadi ketika inisialisasi langganan2 pada metode initState() karena sudah ada inisialisasi langganan untuk menangani stream yang sama pada satu waktu.
 
 ![Output](docs/soal10.png)
+
+>**Soal 11**
+>- Jelaskan mengapa hal itu bisa terjadi ?
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+>- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 10,11".
+
+Jawab: 
+
+Saat tombol "New Random Number" ditekan, maka akan menghasilkan dua angka random yang sama. Angka-angka tersebut merupakan output dari stream yang dipanggil oleh objek subscription dan subscription2. Stream tersebut akan mengembalikan nilai berupa event (angka random) yang dipisahkan dengan tanda "-". Saat tombol "Stop Stream" ditekan, maka akan menghentikan langganan terhadap stream. Hal ini menyebabkan stream tidak lagi bisa mengeluarkan output, meskipun tombol "New Random Number" ditekan.
+
+![Output](docs/soal11.gif)

@@ -55,7 +55,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
     super.initState();
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-    Stream stream = numberStreamController.stream;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
     subscription = stream.listen((event) {
       setState(() {
         // lastNumber = event;
@@ -85,10 +85,10 @@ class _StreamHomePageState extends State<StreamHomePage> {
       body: SizedBox(
               width: double.infinity,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(lastNumber.toString()),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(values),
                   ElevatedButton(
                     onPressed: () => addRandomNumber(), 
                     child: Text('New Random Number'),
