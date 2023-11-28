@@ -131,3 +131,12 @@ Dengan langkah ini, memberikan fungsionalitas untuk menambahkan angka acak ke al
 ![Output](docs/soal9.gif)
 
 ![Output](docs/soal9.png)
+
+>**Soal 10**
+>- Jelaskan mengapa error itu bisa terjadi ?
+
+Jawab: 
+
+Kesalahan tersebut terjadi ketika mencoba untuk menambahkan atau membuat dua langganan pada stream yang sama, tanpa membatalkan langganan sebelumnya. Hal tersebut terjadi ketika inisialisasi langganan2 pada metode initState() karena sudah ada inisialisasi langganan untuk menangani stream yang sama pada satu waktu.
+
+![Output](docs/soal10.png)
