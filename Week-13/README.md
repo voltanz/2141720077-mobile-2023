@@ -112,3 +112,22 @@ Jawab:
 
 ![Output](docs/soal8.gif)
 
+>**Soal 9**
+>- Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+>- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".
+
+Jawab: 
+
+- Langkah 2
+Pada langkah ini, Anda sedang mengedit metode initState() dalam framework Flutter. initState() adalah metode yang dipanggil setelah widget telah diinisialisasi, dan ini sering digunakan untuk melakukan konfigurasi awal dan memulai sumber daya yang diperlukan.
+
+- Langkah 6
+Langkah ini menunjukkan bagaimana menangani pembuangan (disposing) sumber daya yang digunakan oleh widget. Metode dispose() dipanggil ketika widget dihapus dari pohon widget.
+
+- Langkah 8
+Dengan langkah ini, memberikan fungsionalitas untuk menambahkan angka acak ke aliran sesuai dengan kondisi-kondisi tertentu, dan Anda menangani dengan bijak situasi di mana kontroler aliran sudah ditutup.
+
+![Output](docs/soal9.gif)
+
+![Output](docs/soal9.png)
