@@ -164,3 +164,28 @@ Jawab:
 - Sementara itu, Langkah 7 menunjukkan penggunaan kode untuk membuat antarmuka pengguna (UI) yang dapat menampilkan nilai dari stream secara real-time. Untuk mencapai ini, digunakan StreamBuilder, yang secara otomatis memperbarui antarmuka setiap kali ada perubahan dalam stream. Perubahan ini dapat berupa perubahan nilai atau munculnya error. Dalam kasus terjadinya error, pesan 'Error!' akan ditampilkan. Jika tidak ada error dan data diterima dari stream, angka acak akan ditampilkan dengan ukuran font setara dengan 96. Namun, jika tidak ada data yang diterima, antarmuka akan menampilkan widget kosong.
 
 ![Output](docs/soal12.gif)
+
+>**Soal 13**
+>- Jelaskan maksud praktikum ini ! Dimanakah letak konsep pola BLoC-nya ?
+>- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+>- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 13".
+
+Jawab:
+
+- **RandomNumberBloc Class:**
+
+RandomNumberBloc adalah implementasi BLoC. Ini memiliki dua StreamController: satu untuk mengontrol input events (_generateRandomController), dan satu untuk mengontrol output (_randomNumberController). _generateRandomController digunakan untuk mengirim peristiwa yang akan memicu pembangkitan nomor acak. Sedangkan _randomNumberController mengontrol stream output yang berisi nomor acak yang dihasilkan.
+
+- **MyHomePage Class:**
+
+MyHomePage adalah contoh antarmuka pengguna yang sederhana yang tidak langsung terlibat dengan logika bisnis. Ini tidak mengandung logika khusus terkait BLoC. Namun, dalam pengembangan aplikasi yang lebih kompleks, logika bisnis dapat dipindahkan ke BLoC untuk menjaga kesatuan dan pemisahan tanggung jawab.
+
+- **RandomScreen Class:**
+
+RandomScreen adalah contoh antarmuka pengguna yang menggunakan RandomNumberBloc. State dari widget ini diatur oleh stream yang dikeluarkan oleh _bloc.randomNumber. Setiap kali peristiwa dikirim melalui _bloc.generateRandom, nomor acak baru dihasilkan dan diperbarui di UI. Dengan memisahkan logika bisnis ke dalam RandomNumberBloc, antarmuka pengguna dapat fokus pada tampilan dan respons terhadap perubahan state.
+
+- **Pemanggilan BLoC di main.dart:**
+
+BLoC (RandomNumberBloc) diinisialisasi dan dimiliki oleh _RandomScreenState. Pemanggilan _bloc.generateRandom.add(null) pada tombol tindakan antarmuka pengguna memicu pembangkitan nomor acak melalui BLoC.
+
+![Output](docs/soal13.gif)
